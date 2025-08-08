@@ -72,6 +72,7 @@ def transliterate_modern_greek_v20(text_koine):
 
 # Interfaz Streamlit
 st.title("Transliterador de Griego Koiné a Pronunciación Moderna")
+st.markdown("**Por Gustavo Uliarte **")
 input_text = st.text_area("Pega el texto griego aquí:", height=200)
 
 if st.button("Transliterar"):
