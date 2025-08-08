@@ -75,7 +75,7 @@ st.title("Transliterador de Griego Koiné a Pronunciación Moderna")
 st.markdown(
     """
     <p style="font-size:16px;">
-        <strong>Por Gustavo Fernández</strong>
+        <strong>Por Gustavo Uliarte</strong>
         <a href="https://www.facebook.com/Asistente3Juan15/" target="_blank" style="text-decoration:none;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
                  alt="Facebook" width="20" style="vertical-align:middle; margin-left:10px;">
