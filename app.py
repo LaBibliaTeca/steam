@@ -98,7 +98,7 @@ st.markdown(
         <a href="https://www.facebook.com/Asistente3Juan15/" target="_blank" style="text-decoration:none;">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
                  alt="Facebook" width="20" style="vertical-align:middle; margin-left:10px;">
-        </a> Asistente3Juan15
+        </a> Asistente3Juan15 - en desarrollo.
     </p>
     """,
     unsafe_allow_html=True
