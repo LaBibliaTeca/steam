@@ -37,7 +37,7 @@ def postprocess_gamma(text):
 basic_mapping = {
     'α': 'a', 'β': 'v', 'γ': 'g', 'δ': 'd', 'ε': 'e', 'η': 'i',
     'θ': 'z', 'ι': 'i', 'κ': 'k', 'λ': 'l', 'μ': 'm', 'ν': 'n', 'ὸ': 'ó',
-    'ντ': 'd', 'ξ': 'x', 'ο': 'o', 'π': 'p', 'ρ': 'r', 'σ': 's', 'ς': 's',
+    'ντ': 'd', 'ξ': 'x', 'ο': 'o', 'π': 'p', 'ρ': 'r', 'σ': 's', 'ς': 's', 'ῶ': 'ó',
     'τ': 't', 'υ': 'i', 'φ': 'f', 'χ': 'j', 'ψ': 'ps', 'ω': 'o', 'ζ': 'dz', 'ῶ': 'ó',
     'Α': 'A', 'Β': 'V', 'Γ': 'G', 'Δ': 'D', 'Ε': 'E', 'Ζ': 'Dz', 'Η': 'I',
     'Θ': 'Z', 'Ι': 'I', 'Κ': 'K', 'Λ': 'L', 'Μ': 'M', 'Ν': 'N', 'Ξ': 'X',
@@ -46,9 +46,28 @@ basic_mapping = {
     '.': '.', ',': ',', ';': '?', '·': ':', ' ': ' ', '\n': '\n',
     '’': "'", '᾽': ''
 }
+circunflejo_map = {
+    'ο͂': 'ó',
+    'Ο͂': 'Ó',
+    'ῶ': 'ó',
+    'Ω͂': 'Ó',
+    'ῦ': 'ú',
+    'Υ͂': 'Ú',
+    'ῆ': 'í',
+    'Η͂': 'Í',
+    'ῖ': 'í',
+    'Ι͂': 'Í',
+    'ᾶ': 'á',
+    'Α͂': 'Á',
+    'ε͂': 'é',
+    'Ε͂': 'É',
+}
 
 def transliterate_modern_greek_v20(text_koine):
     text = normalize_strong(text_koine)
+    for koiné_char, accented_char in circunflejo_map.items():
+    text = text.replace(koiné_char, accented_char)
+
     text = replace_diptongos(text)
     sorted_keys = sorted(basic_mapping.keys(), key=len, reverse=True)
     result = []
