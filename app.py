@@ -66,7 +66,7 @@ circunflejo_map = {
 def transliterate_modern_greek_v20(text_koine):
     text = normalize_strong(text_koine)
     for koiné_char, accented_char in circunflejo_map.items():
-    text = text.replace(koiné_char, accented_char)
+        text = text.replace(koiné_char, accented_char)
 
     text = replace_diptongos(text)
     sorted_keys = sorted(basic_mapping.keys(), key=len, reverse=True)
