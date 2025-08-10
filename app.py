@@ -66,14 +66,23 @@ def postprocess_av_ef(text):
     permitiendo marcas combinantes entre 'au' y la consonante.
     """
     sordas = "ptkfsx"  # consonantes sordas en la transliteración
+    #agregué
+    combinantes = r"[\u0300-\u036f]*"  # marcas diacríticas combinantes
+        # Paso 1: au/eu seguidos por consonante sorda → af/ef
+    text = re.sub(r'au' + combinantes + r'(?=[' + sordas + r'])', 'af', text)
+    text = re.sub(r'eu' + combinantes + r'(?=[' + sordas + r'])', 'ef', text)
 
-    # af/ef si hay consonante sorda después (permitiendo marcas combinantes)
-    text = re.sub(r'au([\u0300-\u036f]*)([' + sordas + r'])', r'af\1\2', text)
-    text = re.sub(r'eu([\u0300-\u036f]*)([' + sordas + r'])', r'ef\1\2', text)
-
-    # el resto → av / ev
+    # Paso 2: au/eu restantes → av/ev
     text = re.sub(r'au', 'av', text)
     text = re.sub(r'eu', 'ev', text)
+
+    #Original af/ef si hay consonante sorda después (permitiendo marcas combinantes)
+    #c  text = re.sub(r'au([\u0300-\u036f]*)([' + sordas + r'])', r'af\1\2', text)
+    #c  text = re.sub(r'eu([\u0300-\u036f]*)([' + sordas + r'])', r'ef\1\2', text)
+
+    # el resto → av / ev
+    #c  text = re.sub(r'au', 'av', text)
+    #c  text = re.sub(r'eu', 'ev', text)
 
     return text
 
