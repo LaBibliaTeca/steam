@@ -69,12 +69,17 @@ def postprocess_av_ef(text):
     #agregué
     combinantes = r"[\u0300-\u036f]*"  # marcas diacríticas combinantes
         # Paso 1: au/eu seguidos por consonante sorda → af/ef
+    # Paso 1: au/eu seguidos por consonante sorda → af/ef (incluye mayúsculas)
     text = re.sub(r'au' + combinantes + r'(?=[' + sordas + r'])', 'af', text)
     text = re.sub(r'eu' + combinantes + r'(?=[' + sordas + r'])', 'ef', text)
+    text = re.sub(r'Au' + combinantes + r'(?=[' + sordas + r'])', 'Af', text)
+    text = re.sub(r'Eu' + combinantes + r'(?=[' + sordas + r'])', 'Ef', text)
 
-    # Paso 2: au/eu restantes → av/ev
+    # Paso 2: au/eu restantes → av/ev (incluye mayúsculas)
     text = re.sub(r'au', 'av', text)
     text = re.sub(r'eu', 'ev', text)
+    text = re.sub(r'Au', 'Av', text)
+    text = re.sub(r'Eu', 'Ev', text)
 
     #Original af/ef si hay consonante sorda después (permitiendo marcas combinantes)
     #c  text = re.sub(r'au([\u0300-\u036f]*)([' + sordas + r'])', r'af\1\2', text)
